@@ -172,37 +172,6 @@
         .btn-option:hover {
             background-color: #bbb;
         }
-
-        .popup-back {
-            visibility: hidden;
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
-            margin: auto;
-            background-color: black;
-            opacity: 0.7;
-            z-index: 100;
-        }
-
-        .top-desc {
-            font-size: 25px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 5;
-            /* 표시할 줄의 개수 */
-            -webkit-box-orient: vertical;
-            text-overflow: ellipsis;
-            /* 기준 이상의 글은 ...(ellipsis)로 줄이기 */
-            margin-bottom: 30px;
-            font-family: 'Gowun Dodum', sans-serif;
-        }
-
-        .top-comment {
-            font-family: 'Gowun Dodum', sans-serif;
-            font-size: 25px;
-        }
     </style>
 
     <script>
@@ -230,15 +199,15 @@
 
                     let temp_html = `<div class="col">
                                         <div class="card">
+                           
                                                 <div class="screen">
-                                                    <div class="top">
-                                                        <div class="top-desc">${desc}</div>
-                                                        <div class="top-comment">등록자 코멘트 : ${comment}</div>
-                                                    </div>
+                                                    <div class="top">${desc}<br><br> 
+                                                        등록 유저 코멘트 : ${comment}</div>
                                                     <img src="${image}"
                                                         class="card-img-top" alt="...">
                                                            
                                                 </div>
+                                
                                             <div class="card-body">
                                                 <h5 class="card-title">${title}</h5>
                                                 <p>${stars}</p>
@@ -249,12 +218,10 @@
                 })
             })
         }
-        
         // 여기부터 영화등록
         function popupOpen() {
             // document.getElementById('popup').style.display= 'inline';
             document.getElementById('popup').style.visibility = 'visible';
-            document.getElementById('popup-back').style.visibility = 'visible';
         }
         // 등록함수
         function onResgistBtn() {
@@ -276,7 +243,6 @@
         function onCancelBtn() {
             // document.getElementById('popup').style.display = 'none';
             document.getElementById('popup').style.visibility = 'hidden';
-            document.getElementById('popup-back').style.visibility = 'hidden';
 
             //메인페이지로 돌아가기
         }
@@ -290,8 +256,6 @@
         <button onclick="popupOpen()" type="button" class="btn btn-outline-dark">추천 영화 등록</button>
     </div>
     <div class="main">
-        <div onmousedown="onCancelBtn()" id="popup-back" class="popup-back">
-        </div>
         <div id="popup" class="popup_content">
             <h1>추천 영화 등록</h1>
             <!-- url입력 텍스트박스 -->
@@ -318,7 +282,6 @@
                 <button onclick="onCancelBtn()" class="btn-option">취소</button>
             </div>
         </div>
-
         <h2 style="width: 80%; margin: 50px auto 30px auto; font-weight: 900;">비전5가 추천하는 영화 Best4</h2>
         <!-- 기본 추천 카드 출력 -->
         <div class="mycards">
@@ -327,9 +290,9 @@
                     <div class="card">
                         <a href={{url_for('sub1')}}>
                             <div class="screen">
-                                <div class="top"><div class="top-desc">‘가모라’를 잃고 슬픔에 빠져 있던 ‘피터 퀼’이 위기에 처한 은하계와 동료를 지키기 위해 다시 한번 가디언즈 팀과 힘을 모으고,
+                                <div class="top">‘가모라’를 잃고 슬픔에 빠져 있던 ‘피터 퀼’이 위기에 처한 은하계와 동료를 지키기 위해 다시 한번 가디언즈 팀과 힘을
+                                    모으고,
                                     성공하지 못할 경우 그들의 마지막이 될지도 모르는 미션에 나서는 이야기</div>
-                                    <div class="top-comment"></div></div>
                                 <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86883/86883_185.jpg"
                                     class="card-img-top" alt="...">
                             </div>
@@ -344,7 +307,9 @@
                     <div class="card">
                         <a href={{url_for('sub2')}}>
                             <div class="screen">
-                                <div class="top"> <div class="top-desc">아무리 빨리 달려도 과거를 앞지를 순 없다 돔(빈 디젤)과 그의 패밀리 앞에 나타난 운명의 적 단테(제이슨 모모아). 과거의 그림자는 돔의 모든 것을 파괴하기 위해 달려온다. 단테에 의해 산산히 흩어진 패밀리들은 모두 목숨을 걸고 맞서야 하는 함정에 빠지고 마는데.. 달리거나 죽거나, 그들의 마지막 질주가 시작된다!</div></div>
+                                <div class="top">아무리 빨리 달려도 과거를 앞지를 순 없다 돔(빈 디젤)과 그의 패밀리 앞에 나타난 운명의 적 단테(제이슨 모모아). 과거의
+                                    그림자는 돔의 모든 것을 파괴하기 위해 달려온다. 단테에 의해 산산히 흩어진 패밀리들은 모두 목숨을 걸고 맞서야 하는 함정에 빠지고 마는데.. 달리거나
+                                    죽거나, 그들의 마지막 질주가 시작된다!</div>
                                 <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86996/86996_185.jpg"
                                     class="card-img-top" alt="...">
                             </div>
@@ -359,8 +324,7 @@
                     <div class="card">
                         <a href={{url_for('sub3')}}>
                             <div class="screen">
-                                <div class="top"><div class="top-desc">사회초년생 ‘도하’와 인디 뮤지션 ‘태인’이 장거리 연애를 시작하면서 벌이는 언택트 러브 스토리</div>
-                                <div class="top-comment"></div></div>
+                                <div class="top">사회초년생 ‘도하’와 인디 뮤지션 ‘태인’이 장거리 연애를 시작하면서 벌이는 언택트 러브 스토리</div>
                                 <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000086/86912/86912_185.jpg"
                                     class="card-img-top" alt="...">
                             </div>
@@ -375,8 +339,11 @@
                     <div class="card">
                         <a href={{url_for('sub4')}}>
                             <div class="screen">
-                                <div class="top"><div class="top-desc">'붉은 봉투를 줍는 자, 운명을 거스를 수 없다!' 혈기왕성한 형사 우밍한은 중요한 사건 현장에서 도로에 흩어진 증거물을 수집하던 중 의문의 붉은 봉투를 발견하고 무심코 줍는다. 그때부터 밍한에게 벌어지는 불길한 사건들! 자신에게 다가온 '운명'을 한사코 거부하던 밍한은 거듭되는 생명의 위협에 마지못해 인생 최대의 결심을 하는데... 얼결에 '부부'가 된 귀신과 최악의 빌런을 잡기 위해 인간+귀신 콤비가 벌이는 극강의 공조 수사! 코믹과 액션을 버무리고 감동과 반전까지 가미한, 풀옵션 오감으로 즐기는 블록버스터. 인류애 넘치는 콤비의 격정적인 공조가 마침내 시작된다! 이 콤비도, 두 사람의 공조 수사도 완전히 다 미쳤다!!!</div>
-                                <div class="top-comment"></div></div>
+                                <div class="top">'붉은 봉투를 줍는 자, 운명을 거스를 수 없다!' 혈기왕성한 형사 우밍한은 중요한 사건 현장에서 도로에 흩어진 증거물을
+                                    수집하던 중 의문의 붉은 봉투를 발견하고 무심코 줍는다. 그때부터 밍한에게 벌어지는 불길한 사건들! 자신에게 다가온 '운명'을 한사코 거부하던 밍한은
+                                    거듭되는 생명의 위협에 마지못해 인생 최대의 결심을 하는데... 얼결에 '부부'가 된 귀신과 최악의 빌런을 잡기 위해 인간+귀신 콤비가 벌이는 극강의
+                                    공조 수사! 코믹과 액션을 버무리고 감동과 반전까지 가미한, 풀옵션 오감으로 즐기는 블록버스터. 인류애 넘치는 콤비의 격정적인 공조가 마침내 시작된다!
+                                    이 콤비도, 두 사람의 공조 수사도 완전히 다 미쳤다!!!</div>
                                 <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87003/87003_185.jpg"
                                     class="card-img-top" alt="...">
                             </div>
